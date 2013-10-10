@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomSorter", "RandomSorterGenerator\RandomSorter.csproj", "{8339DB92-FD2C-47EA-98BB-ACE10756CEBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomSorterTests", "RandomSorterTests\RandomSorterTests.csproj", "{ABD4365D-3115-4B3A-979C-3EED6140DC0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DD8822D4-AB34-4A5B-81C0-845B842F709F}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		RandomSorterGenerator.vsmdi = RandomSorterGenerator.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachBot", "Mister\CoachBot.csproj", "{6D8709CA-2616-4CB6-B320-836D77E966C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlResourceAcess", "XmlResourceAcess\XmlResourceAcess.csproj", "{AC4EDFDB-B76C-45EA-99E1-11E009EE1DC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachBotCommon", "CoachBotCommon\CoachBotCommon.csproj", "{D93FA2B4-2AB1-4D55-AA6E-AA46FD9CA42C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleToDelete", "SampleToDelete\SampleToDelete.csproj", "{E3A8A7A2-2BD7-4929-89FA-C9AD4CEDA870}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = RandomSorterGenerator.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8339DB92-FD2C-47EA-98BB-ACE10756CEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8339DB92-FD2C-47EA-98BB-ACE10756CEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8339DB92-FD2C-47EA-98BB-ACE10756CEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8339DB92-FD2C-47EA-98BB-ACE10756CEBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD4365D-3115-4B3A-979C-3EED6140DC0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD4365D-3115-4B3A-979C-3EED6140DC0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD4365D-3115-4B3A-979C-3EED6140DC0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD4365D-3115-4B3A-979C-3EED6140DC0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D8709CA-2616-4CB6-B320-836D77E966C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D8709CA-2616-4CB6-B320-836D77E966C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D8709CA-2616-4CB6-B320-836D77E966C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D8709CA-2616-4CB6-B320-836D77E966C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC4EDFDB-B76C-45EA-99E1-11E009EE1DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC4EDFDB-B76C-45EA-99E1-11E009EE1DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC4EDFDB-B76C-45EA-99E1-11E009EE1DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC4EDFDB-B76C-45EA-99E1-11E009EE1DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D93FA2B4-2AB1-4D55-AA6E-AA46FD9CA42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D93FA2B4-2AB1-4D55-AA6E-AA46FD9CA42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D93FA2B4-2AB1-4D55-AA6E-AA46FD9CA42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D93FA2B4-2AB1-4D55-AA6E-AA46FD9CA42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A8A7A2-2BD7-4929-89FA-C9AD4CEDA870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A8A7A2-2BD7-4929-89FA-C9AD4CEDA870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A8A7A2-2BD7-4929-89FA-C9AD4CEDA870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A8A7A2-2BD7-4929-89FA-C9AD4CEDA870}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

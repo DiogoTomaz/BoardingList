@@ -1,0 +1,43 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="Player">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="Name"/>
+        <xs:element name="MatchStatistics" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="Assists" default="0" maxOccurs="1"  minOccurs="1" />
+              <xs:element type="xs:int" name="Goals" default="0" maxOccurs="1"  minOccurs="1" />
+              <xs:element type="xs:int" name="TotalAttendences" default="0" maxOccurs="1"  minOccurs="1" />
+              <xs:element type="xs:int" name="TotalWaivers" default="0" maxOccurs="1"  minOccurs="1"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AssociatedPlayers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Player" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="id" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
