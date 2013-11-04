@@ -22,4 +22,10 @@ namespace CoachBot.Common
         Indoor
         , OutDoor
     }
+
+    public enum GeographicalLocation
+    {
+        Telheiras,
+        Damaia
+    }
 }

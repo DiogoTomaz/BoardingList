@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.Linq;
 using System.IO;
 using System.Text;
+using Microsoft.Xml.Serialization.GeneratedAssembly;
 
 namespace XmlResourceAcess
 {
@@ -31,7 +32,7 @@ namespace XmlResourceAcess
             List<IPlayer> players = new List<IPlayer>();
             foreach (var playerEl in xDoc.Root.Elements()) // Root element is ignored, all subsequent elements will be players
             {
-                XmlSerializer ser = new XmlSerializer(typeof(Player));
+                PlayerPlayerSerializer ser = new PlayerPlayerSerializer();
                 players.Add(this.SerializePlayerToEntity((Player)ser.Deserialize(playerEl.CreateReader())));
             }
 
@@ -193,14 +194,15 @@ namespace XmlResourceAcess
 
             m.AwayTeam.ID = ParseGuidWithException(matchSerialized.AwayTeam.Team.id);
             m.AwayTeam.Name = matchSerialized.AwayTeam.Team.Name;
-            m.AwayTeam.Players = GetPlayersFromSerializedList(matchSerialized.AwayTeam.Team.Players);            
+            m.AwayTeam.Players = GetPlayersFromSerializedList(matchSerialized.AwayTeam.Team.Players.ToList());
             
             m.HomeTeam.ID = ParseGuidWithException(matchSerialized.HomeTeam.Team.id);
             m.HomeTeam.Name = matchSerialized.HomeTeam.Team.Name;
-            m.HomeTeam.Players = GetPlayersFromSerializedList(matchSerialized.HomeTeam.Team.Players);            
+            m.HomeTeam.Players = GetPlayersFromSerializedList(matchSerialized.HomeTeam.Team.Players.ToList());
 
             m.LogisticsInformation = matchSerialized.LogisticsInformation;
             m.PitchLocaton = (PitchLocation)Enum.Parse(typeof(PitchLocation), matchSerialized.PitchLocation.ToString());
+            m.GeographicalLocation = (GeographicalLocation)Enum.Parse(typeof(GeographicalLocation), matchSerialized.GeographicalLocation.ToString());
             m.PlayerPerTeam = matchSerialized.PlayersPerTeam;
             m.PricePerPerson = matchSerialized.PricePerPerson;
             m.Report = matchSerialized.Report;
@@ -275,9 +277,18 @@ namespace XmlResourceAcess
             {
                 using (TextWriter streamWriter = new StreamWriter(memoryStream))
                 {
-                    var xmlSerializer = new XmlSerializer(typeof(T));
-                    xmlSerializer.Serialize(streamWriter, obj);
-                    return XElement.Parse(Encoding.ASCII.GetString(memoryStream.ToArray()));
+                    if (obj.GetType().Equals(typeof(Player)))
+                    {
+                        var xmlSerializer = new PlayerPlayerSerializer();
+                        xmlSerializer.Serialize(streamWriter, obj);
+                        return XElement.Parse(Encoding.ASCII.GetString(memoryStream.ToArray()));
+                    }
+                    else
+                    {
+                        var xmlSerializer = new MatchSerializer();
+                        xmlSerializer.Serialize(streamWriter, obj);
+                        return XElement.Parse(Encoding.ASCII.GetString(memoryStream.ToArray()));
+                    }
                 }
             }
         }

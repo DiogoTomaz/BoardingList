@@ -36,5 +36,6 @@ namespace CoachBot.Common
         /// </summary>
         int PlayerPerTeam { get; set; }
         PitchLocation PitchLocaton { get; set; }
+        GeographicalLocation GeographicalLocation { get; set; }
     }
 }
