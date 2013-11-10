@@ -63,18 +63,15 @@ namespace XmlResourceAcess
             return XDocument.Load(files.Single().FullName);
         }
 
-
         public List<IPlayer> GetRooster()
         {
             return Parser.LoadFromRooster(Rooster);
         }
-
      
         public void UpdateRooster(List<IPlayer> rooster)
         {
             Parser.UpdateRooster(rooster, this.Rooster);
         }
-
 
         public void SavePlayer(IPlayer player)
         {

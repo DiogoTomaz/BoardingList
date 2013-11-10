@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Game"
+    targetNamespace="http://tempuri.org/Game.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Game.xsd"
+    xmlns:mstns="http://tempuri.org/Game.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Match">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="HomeTeam" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Team" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Name" minOccurs="0"/>
+                    <xs:element name="Players">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Player" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:attribute name="id" use="required">
+                                <xs:simpleType>
+                                  <xs:restriction base="xs:string">
+                                    <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+                                  </xs:restriction>
+                                </xs:simpleType>
+                              </xs:attribute>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="id" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AwayTeam" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Team" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Name" minOccurs="0"/>
+                    <xs:element name="Players">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Player" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="id" use="required">
+                                    <xs:simpleType>
+                                      <xs:restriction base="xs:string">
+                                        <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+                                      </xs:restriction>
+                                    </xs:simpleType>
+                                  </xs:attribute>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="id" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Result" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="HomeResult" maxOccurs="1" minOccurs="1" />
+              <xs:element type="xs:int" name="AwayResult" maxOccurs="1" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="VenueLocation"/>
+        <xs:element type="xs:dateTime" name="EventTime"/>
+        <xs:element type="xs:decimal" name="TotalPrice"/>
+        <xs:element type="xs:decimal" name="PricePerPerson"/>
+        <xs:element type="xs:boolean" name="WasCanceled"/>
+        <xs:element type="xs:string" name="Report"/>
+        <xs:element type="xs:string" name="LogisticsInformation"/>
+        <xs:element type="xs:byte" name="PlayersPerTeam"/>
+        <xs:element name="Type">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="FutSal"/>
+              <xs:enumeration value="Football"/>
+              <xs:enumeration value="Basketball"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="PitchType">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Vynil"/>
+              <xs:enumeration value="SintheticGrass"/>
+              <xs:enumeration value="GrassMat"/>
+              <xs:enumeration value="Wood"/>
+              <xs:enumeration value="Grass"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="PitchLocation">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Indoor"/>
+              <xs:enumeration value="Outdoor"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="GeographicalLocation">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Telheiras"/>
+              <xs:enumeration value="Damaia"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Player">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="Name"/>
+        <xs:element name="MatchStatistics" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="Assists" default="0" maxOccurs="1"  minOccurs="1" />
+              <xs:element type="xs:int" name="Goals" default="0" maxOccurs="1"  minOccurs="1" />
+              <xs:element type="xs:int" name="TotalAttendences" default="0" maxOccurs="1"  minOccurs="1" />
+              <xs:element type="xs:int" name="TotalWaivers" default="0" maxOccurs="1"  minOccurs="1"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AssociatedPlayers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Player" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="id" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

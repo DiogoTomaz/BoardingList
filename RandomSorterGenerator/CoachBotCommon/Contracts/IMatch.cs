@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CoachBot.Common
 {
@@ -22,10 +23,9 @@ namespace CoachBot.Common
         string Report { get; set; }
 
         /// <summary>
-        /// Random Informations on Logistics, 
-        /// i.e: Who kept the ball, etc.
+        /// Random Informations on Logistics
         /// </summary>
-        string LogisticsInformation { get; set; }
+        IEnumerable<ILogistics> LogisticsInformation { get; set; }
 
         TypeOfMatch Type { get; set; }
         TypeOfFlooring Floor { get; set; }

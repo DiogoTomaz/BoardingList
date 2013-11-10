@@ -62,6 +62,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Schemas\Game.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Schemas\Match.xsd">
       <SubType>Designer</SubType>
     </None>

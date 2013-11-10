@@ -28,4 +28,10 @@ namespace CoachBot.Common
         Telheiras,
         Damaia
     }
+
+    public enum LogisticsOptions
+    {
+        Bola,
+        Coletes
+    }
 }

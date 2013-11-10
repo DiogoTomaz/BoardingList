@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ILogistics.cs" />
     <Compile Include="Contracts\IMatch.cs" />
     <Compile Include="Contracts\IMatchStatistics.cs" />
     <Compile Include="Enumerators.cs" />
