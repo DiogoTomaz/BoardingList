@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RandomSorterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RandomSorterModelStoreContainer">
+    <EntitySet Name="TeamSet" EntityType="RandomSorterModel.Store.TeamSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GameSet" EntityType="RandomSorterModel.Store.GameSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlayerSet" EntityType="RandomSorterModel.Store.PlayerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GameAssociationTeamSet" EntityType="RandomSorterModel.Store.GameAssociationTeamSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSet" EntityType="RandomSorterModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfileSet" EntityType="RandomSorterModel.Store.ProfileSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlayerSet_PlayerRepository" EntityType="RandomSorterModel.Store.PlayerSet_PlayerRepository" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlayerSet_PlayerStaging" EntityType="RandomSorterModel.Store.PlayerSet_PlayerStaging" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="GameAssociationTeamTeam" Association="RandomSorterModel.Store.GameAssociationTeamTeam">
+      <End Role="GameAssociationTeam" EntitySet="GameAssociationTeamSet" />
+      <End Role="Team" EntitySet="TeamSet" />
+    </AssociationSet>
+    <AssociationSet Name="GameAssociationTeamGame" Association="RandomSorterModel.Store.GameAssociationTeamGame">
+      <End Role="GameAssociationTeam" EntitySet="GameAssociationTeamSet" />
+      <End Role="Game" EntitySet="GameSet" />
+    </AssociationSet>
+    <AssociationSet Name="GameAssociationTeamPlayer" Association="RandomSorterModel.Store.GameAssociationTeamPlayer">
+      <End Role="GameAssociationTeam" EntitySet="GameAssociationTeamSet" />
+      <End Role="Player" EntitySet="PlayerSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserProfile" Association="RandomSorterModel.Store.UserProfile">
+      <End Role="Profile" EntitySet="ProfileSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="PlayerUser" Association="RandomSorterModel.Store.PlayerUser">
+      <End Role="Player" EntitySet="PlayerSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerRepository_inherits_Player" Association="RandomSorterModel.Store.FK_PlayerRepository_inherits_Player">
+      <End Role="Player" EntitySet="PlayerSet" />
+      <End Role="PlayerRepository" EntitySet="PlayerSet_PlayerRepository" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlayerStaging_inherits_Player" Association="RandomSorterModel.Store.FK_PlayerStaging_inherits_Player">
+      <End Role="Player" EntitySet="PlayerSet" />
+      <End Role="PlayerStaging" EntitySet="PlayerSet_PlayerStaging" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TeamSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="true" />
+    <Property Name="UserModified" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="true" />
+    <Property Name="UserModified" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlayerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rating" Type="smallint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="true" />
+    <Property Name="UserModified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameAssociationTeamSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="GameId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TeamId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PlayerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="true" />
+    <Property Name="UserModified" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsActivated" Type="bit" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="true" />
+    <Property Name="UserModified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdProfile" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfileSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlayerSet_PlayerRepository">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MobilePhone" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlayerSet_PlayerStaging">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="AcceptanceDate" Type="datetime" Nullable="false" />
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="GameAssociationTeamTeam">
+    <End Role="GameAssociationTeam" Type="RandomSorterModel.Store.GameAssociationTeamSet" Multiplicity="*" />
+    <End Role="Team" Type="RandomSorterModel.Store.TeamSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameAssociationTeam">
+        <PropertyRef Name="TeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameAssociationTeamGame">
+    <End Role="GameAssociationTeam" Type="RandomSorterModel.Store.GameAssociationTeamSet" Multiplicity="*" />
+    <End Role="Game" Type="RandomSorterModel.Store.GameSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameAssociationTeam">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GameAssociationTeamPlayer">
+    <End Role="GameAssociationTeam" Type="RandomSorterModel.Store.GameAssociationTeamSet" Multiplicity="*" />
+    <End Role="Player" Type="RandomSorterModel.Store.PlayerSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameAssociationTeam">
+        <PropertyRef Name="PlayerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserProfile">
+    <End Role="Profile" Type="RandomSorterModel.Store.ProfileSet" Multiplicity="1" />
+    <End Role="User" Type="RandomSorterModel.Store.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdProfile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlayerUser">
+    <End Role="Player" Type="RandomSorterModel.Store.PlayerSet" Multiplicity="*" />
+    <End Role="User" Type="RandomSorterModel.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerRepository_inherits_Player">
+    <End Role="Player" Type="RandomSorterModel.Store.PlayerSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PlayerRepository" Type="RandomSorterModel.Store.PlayerSet_PlayerRepository" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlayerRepository">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlayerStaging_inherits_Player">
+    <End Role="Player" Type="RandomSorterModel.Store.PlayerSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PlayerStaging" Type="RandomSorterModel.Store.PlayerSet_PlayerStaging" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlayerStaging">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RandomSorterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="RandomSorterModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TeamSet" EntityType="RandomSorterModel.Team" />
+          <EntitySet Name="GameSet" EntityType="RandomSorterModel.Game" />
+          <EntitySet Name="PlayerSet" EntityType="RandomSorterModel.Player" />
+          <EntitySet Name="GameAssociationTeamSet" EntityType="RandomSorterModel.GameAssociationTeam" />
+          <AssociationSet Name="GameAssociationTeamTeam" Association="RandomSorterModel.GameAssociationTeamTeam">
+            <End Role="GameAssociationTeam" EntitySet="GameAssociationTeamSet" />
+            <End Role="Team" EntitySet="TeamSet" />
+          </AssociationSet>
+          <AssociationSet Name="GameAssociationTeamGame" Association="RandomSorterModel.GameAssociationTeamGame">
+            <End Role="GameAssociationTeam" EntitySet="GameAssociationTeamSet" />
+            <End Role="Game" EntitySet="GameSet" />
+          </AssociationSet>
+          <AssociationSet Name="GameAssociationTeamPlayer" Association="RandomSorterModel.GameAssociationTeamPlayer">
+            <End Role="GameAssociationTeam" EntitySet="GameAssociationTeamSet" />
+            <End Role="Player" EntitySet="PlayerSet" />
+          </AssociationSet>
+          <EntitySet Name="UserSet" EntityType="RandomSorterModel.User" />
+          <EntitySet Name="ProfileSet" EntityType="RandomSorterModel.Profile" />
+          <AssociationSet Name="UserProfile" Association="RandomSorterModel.UserProfile">
+            <End Role="Profile" EntitySet="ProfileSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerUser" Association="RandomSorterModel.PlayerUser">
+            <End Role="Player" EntitySet="PlayerSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="true" />
+          <Property Name="UserModified" Type="String" Nullable="false" />
+          <NavigationProperty Name="GameAssociationTeam" Relationship="RandomSorterModel.GameAssociationTeamTeam" FromRole="Team" ToRole="GameAssociationTeam" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="true" />
+          <Property Name="UserModified" Type="String" Nullable="false" />
+          <NavigationProperty Name="GameAssociationTeam" Relationship="RandomSorterModel.GameAssociationTeamGame" FromRole="Game" ToRole="GameAssociationTeam" />
+        </EntityType>
+        <EntityType Name="PlayerRepository" BaseType="RandomSorterModel.Player">
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="MobilePhone" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Rating" Type="Int16" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="true" />
+          <Property Name="UserModified" Type="String" Nullable="false" />
+          <NavigationProperty Name="GameAssociationTeam" Relationship="RandomSorterModel.GameAssociationTeamPlayer" FromRole="Player" ToRole="GameAssociationTeam" />
+          <NavigationProperty Name="User" Relationship="RandomSorterModel.PlayerUser" FromRole="Player" ToRole="User" />
+        </EntityType>
+        <EntityType Name="GameAssociationTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Team" Relationship="RandomSorterModel.GameAssociationTeamTeam" FromRole="GameAssociationTeam" ToRole="Team" />
+          <NavigationProperty Name="Game" Relationship="RandomSorterModel.GameAssociationTeamGame" FromRole="GameAssociationTeam" ToRole="Game" />
+          <Property Name="GameId" Type="Guid" Nullable="false" />
+          <Property Name="TeamId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="RandomSorterModel.GameAssociationTeamPlayer" FromRole="GameAssociationTeam" ToRole="Player" />
+          <Property Name="PlayerId" Type="Guid" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="true" />
+          <Property Name="UserModified" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="GameAssociationTeamTeam">
+          <End Type="RandomSorterModel.GameAssociationTeam" Role="GameAssociationTeam" Multiplicity="*" />
+          <End Type="RandomSorterModel.Team" Role="Team" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameAssociationTeam">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameAssociationTeamGame">
+          <End Type="RandomSorterModel.GameAssociationTeam" Role="GameAssociationTeam" Multiplicity="*" />
+          <End Type="RandomSorterModel.Game" Role="Game" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameAssociationTeam">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GameAssociationTeamPlayer">
+          <End Type="RandomSorterModel.GameAssociationTeam" Role="GameAssociationTeam" Multiplicity="*" />
+          <End Type="RandomSorterModel.Player" Role="Player" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameAssociationTeam">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlayerStaging" BaseType="RandomSorterModel.Player" >
+          <Property Name="AcceptanceDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="IsActivated" Type="Boolean" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="true" />
+          <Property Name="UserModified" Type="String" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="RandomSorterModel.UserProfile" FromRole="User" ToRole="Profile" />
+          <Property Name="IdProfile" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="RandomSorterModel.PlayerUser" FromRole="User" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Designation" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="RandomSorterModel.UserProfile" FromRole="Profile" ToRole="User" />
+        </EntityType>
+        <Association Name="UserProfile">
+          <End Type="RandomSorterModel.Profile" Role="Profile" Multiplicity="1" />
+          <End Type="RandomSorterModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdProfile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlayerUser">
+          <End Type="RandomSorterModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="RandomSorterModel.User" Role="User" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RandomSorterModelStoreContainer" CdmEntityContainer="RandomSorterModelContainer">
+    <EntitySetMapping Name="TeamSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.Team)">
+        <MappingFragment StoreEntitySet="TeamSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="UserModified" ColumnName="UserModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.Game)">
+        <MappingFragment StoreEntitySet="GameSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="UserModified" ColumnName="UserModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlayerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.Player)">
+        <MappingFragment StoreEntitySet="PlayerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="UserModified" ColumnName="UserModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.PlayerRepository)">
+        <MappingFragment StoreEntitySet="PlayerSet_PlayerRepository">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.PlayerStaging)">
+        <MappingFragment StoreEntitySet="PlayerSet_PlayerStaging">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AcceptanceDate" ColumnName="AcceptanceDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameAssociationTeamSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.GameAssociationTeam)">
+        <MappingFragment StoreEntitySet="GameAssociationTeamSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="UserModified" ColumnName="UserModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActivated" ColumnName="IsActivated" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="UserModified" ColumnName="UserModified" />
+          <ScalarProperty Name="IdProfile" ColumnName="IdProfile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfileSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RandomSorterModel.Profile)">
+        <MappingFragment StoreEntitySet="ProfileSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PlayerUser" TypeName="RandomSorterModel.PlayerUser" StoreEntitySet="PlayerSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Player">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

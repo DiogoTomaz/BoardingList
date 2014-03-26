@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3ca36217b91144a78a34063732ad0457" Name="Diagram1" >
+        <EntityTypeShape EntityType="RandomSorterModel.Team" Width="1.5" PointX="4.25" PointY="0.5" />
+        <EntityTypeShape EntityType="RandomSorterModel.Game" Width="1.5" PointX="2" PointY="1.25" />
+        <EntityTypeShape EntityType="RandomSorterModel.PlayerRepository" Width="1.5" PointX="6.75" PointY="0.5" />
+        <EntityTypeShape EntityType="RandomSorterModel.Player" Width="1.5" PointX="9.125" PointY="0.5" />
+        <InheritanceConnector EntityType="RandomSorterModel.PlayerRepository" />
+        <EntityTypeShape EntityType="RandomSorterModel.GameAssociationTeam" Width="1.5" PointX="7" PointY="2.625" />
+        <AssociationConnector Association="RandomSorterModel.GameAssociationTeamTeam" />
+        <AssociationConnector Association="RandomSorterModel.GameAssociationTeamGame" />
+        <AssociationConnector Association="RandomSorterModel.GameAssociationTeamPlayer" />
+        <EntityTypeShape EntityType="RandomSorterModel.PlayerStaging" Width="1.5" PointX="11.125" PointY="0.5" />
+        <InheritanceConnector EntityType="RandomSorterModel.PlayerStaging" />
+        <EntityTypeShape EntityType="RandomSorterModel.User" Width="1.5" PointX="13.5" PointY="0.5" />
+        <EntityTypeShape EntityType="RandomSorterModel.Profile" Width="1.5" PointX="15.5" PointY="0.5" />
+        <AssociationConnector Association="RandomSorterModel.UserProfile" />
+        <AssociationConnector Association="RandomSorterModel.PlayerUser" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
